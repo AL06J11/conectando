@@ -1,18 +1,25 @@
 // JavaScript Document
+var ID_Usuario="";
 function LoginConectar(U,P)
 {
 	datos="usuario="+U+"&password="+P;
-	$.ajax{{
+	$.ajax({
 		type:"POST",
-		url:"192.168.1.192/Sitio6/Log_ini_m.php",
+		url:"http://192.168.1.192/Sitio6/Log_in_m.php",
 		data:datos
-		}}.done{function(msg){
+		}).done(function(msg){
 			alert(msg);
-			if(msg==|| msg=null)
+			if(msg==""|| msg==null)
 			{
-				alert("usuarios incorrecto");)
+				alert("usuarios incorrecto");}
 				else
-				(alert("Bienvenido");)
+				{
+					var OUsuario=jQuery.parseJSON(msg);
+					ID:Usuario=OUsuario.Usuario;
+				alert("Bienvenido "+ID_Usuario);}
+				location.href="#Busqueda";
+		});
+}
 		
 $(document).ready(function(e){
 	document.addEventListener("deviceready",function(){
@@ -24,3 +31,4 @@ $(document).ready(function(e){
 		});//tap
 	});//deviceready
 });//ready
+	
